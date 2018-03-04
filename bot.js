@@ -70,14 +70,14 @@ bot.on("message", function(message) {
       message.channel.sendMessage("```The Owner and Creator of the VeloxNetwork```")
       break;
       command.CreateCommand("say").Parameter("message", ParameterType.Multiple).Do( async (e) = > 
-{
-  string message = "";
-  for (int i = 0; i < e.Args.Length; i++) 
-  {
-    message += e.Args[i].ToString() + " ";
-  }
-  await e.Channel.SendMessage(message);
-}
+       {
+     string message = "";
+         for (int i = 0; i < e.Args.Length; i++) 
+     {
+          message += e.Args[i].ToString() + " ";
+     }
+        await e.Channel.SendMessage(message);
+      }
       break;
       case "commands":
       message.channel.sendMessage(message.author.toString() + "**, ```To view the commands, Please go into the channel #commands```**")
