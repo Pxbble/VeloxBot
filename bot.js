@@ -72,7 +72,7 @@ bot.on("message", function(message) {
       case "say":
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
-    message.channel.send(sayMessage);
+    message.channel.send(message);
       break;
       case "commands":
       message.channel.sendMessage(message.author.toString() + "**, ```To view the commands, Please go into the channel #commands```**")
