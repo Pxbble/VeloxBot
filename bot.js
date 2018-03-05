@@ -46,7 +46,9 @@ bot.on("message", function(message) {
 
   switch (args[0].toLowerCase()) {
     case "ping":
-      message.channel.sendMessage(message.author.toString() + ", Pong!")
+     const m = await message.channel.send("Ping?");
+    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+  }
       break;
      case "dick":
       message.channel.sendMessage("8=====D")
@@ -69,10 +71,21 @@ bot.on("message", function(message) {
       case "shadey":
       message.channel.sendMessage("```The Owner and Creator of the VeloxNetwork```")
       break;
+    case "purge":
+        const deleteCount = parseInt(args[0], 10);
+    
+    if(!deleteCount || deleteCount < 2 || deleteCount > 100)
+      return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
+    
+    const fetched = await message.channel.fetchMessages({count: deleteCount});
+    message.channel.bulkDelete(fetched)
+      .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
       case "say":
     const sayMessage = args.join(" ");
+      break;
     message.delete().catch(O_o=>{}); 
-    message.channel.send(message);
+    message.channel.send(sayMessage);
+        }
       break;
       case "commands":
       message.channel.sendMessage(message.author.toString() + "**, ```To view the commands, Please go into the channel #commands```**")
