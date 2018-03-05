@@ -45,11 +45,6 @@ bot.on("message", function(message) {
   var args = message.content.substring(PREFIX.length).split(" ");
 
   switch (args[0].toLowerCase()) {
-    case "ping":
-     const m = await message.channel.send("Ping?");
-    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
-  }
-      break;
      case "dick":
       message.channel.sendMessage("8=====D")
       break;
@@ -80,12 +75,11 @@ bot.on("message", function(message) {
     const fetched = await message.channel.fetchMessages({count: deleteCount});
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+      break;
       case "say":
     const sayMessage = args.join(" ");
-      break;
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
-        }
       break;
       case "commands":
       message.channel.sendMessage(message.author.toString() + "**, ```To view the commands, Please go into the channel #commands```**")
