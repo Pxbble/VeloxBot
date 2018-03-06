@@ -77,9 +77,7 @@ bot.on("message", function(message) {
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
       break;
       case "say":
-    const sayMessage = args.join(" ");
-    message.delete().catch(O_o=>{}); 
-    message.channel.send(sayMessage);
+      message.reply(message.content.split("Command here")[1]);
       break;
       case "commands":
       message.channel.sendMessage(message.author.toString() + "**, ```To view the commands, Please go into the channel #commands```**")
