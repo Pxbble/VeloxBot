@@ -67,7 +67,7 @@ bot.on("message", function(message) {
       message.channel.sendMessage("```The Owner and Creator of the VeloxNetwork```")
       break;
       case "say":
-      message.reply(message.content.split("say")[1]);
+      message.channel.sendMessage(message.content.split("say")[1]);
       break;
       case "commands":
       message.channel.sendMessage(message.author.toString() + "**, ```To view the commands, Please go into the channel #commands```**")
